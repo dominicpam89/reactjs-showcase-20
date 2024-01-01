@@ -9,7 +9,7 @@ interface TypeThemeState{
 }
 
 const initialState: TypeThemeState = {
-  colorTheme: "theme-light",
+  colorTheme: "theme-dark",
   fontTheme: "font-theme-primary"
 }
 
