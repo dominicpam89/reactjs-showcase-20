@@ -1,15 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { useAppSelector } from "../data/store";
 import UINavbar from "./Navbar";
 
 const UIRootLayout = () => {
-  const {colorTheme,fontTheme} = useAppSelector(state=>state.theme)
-  const twClass = `${colorTheme} ${fontTheme}`
   return <>
-    <header className={twClass}>
+    <header>
       <UINavbar />
     </header>
-    <main className={twClass}>
+    <main>
       <Outlet />
     </main>
   </>
