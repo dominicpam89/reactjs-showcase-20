@@ -1,6 +1,16 @@
+import { useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
+import UIContainer from "../UI/Container"
+
 const Auth = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  useEffect(()=>{
+    if(!searchParams.get("mode")) setSearchParams( "mode=login")
+  },[searchParams, setSearchParams])
   return <>
-    <h1>Auth</h1>
+    <UIContainer aria-label="auth-container">
+      <p>Test</p>
+    </UIContainer>
   </>
 }
  

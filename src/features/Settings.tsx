@@ -1,6 +1,8 @@
+import UIPageTitle from "../UI/PageTitle";
+
 const Settings = () => {
   return <>
-    <h1>Settings</h1>
+    <UIPageTitle title="Settings" subtitle="user settings" />
   </>
 }
  

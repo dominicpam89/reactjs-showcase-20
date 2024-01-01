@@ -1,6 +1,8 @@
+import UIPageTitle from "../UI/PageTitle";
+
 const Profile = () => {
   return <>
-    <h1>Profile</h1>
+    <UIPageTitle title="Profile" subtitle="User's Profile" />
   </>
 }
  
