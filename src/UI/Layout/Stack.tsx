@@ -2,6 +2,7 @@ interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
   direction?: "horizontal"|"vertical"
   spacing?: "sm"|"md"|"lg"
   customClass?: string
+  centered?: "horizontal"|"vertical"|"all"
 }
 
 const twClasses = {
@@ -23,16 +24,24 @@ const twClasses = {
       vertical: "space-x-8",
       horizontal: "space-y-8"
     },
+  },
+  centered:{
+    vertical: "justify-center",
+    horizontal: "items-center",
+    all: "justify-center items-center"
   }
 }
 
 const UIStack:React.FC<Props> = ({
   direction="horizontal",
   spacing="sm",
+  centered="all",
   customClass="",
   children,
   ...defaultProps
 }) => {
+  
+  // direction
   const _direction =
 		direction === "horizontal"
 			? twClasses.direction.horizontal
@@ -54,8 +63,16 @@ const UIStack:React.FC<Props> = ({
     ? twClasses.spacing.md.vertical
     : twClasses.spacing.sm.vertical
   }
+
+  // centered
+  const _centered = centered==="all"
+  ? twClasses.centered.all
+  : centered==="horizontal"
+  ? twClasses.centered.horizontal
+  : twClasses.centered.vertical
+
   return <>
-    <div {...defaultProps} aria-label="stack" className={`${twClasses.default} ${_direction} ${_spacing}`}>
+    <div {...defaultProps} aria-label="stack" className={`${twClasses.default} ${_direction} ${_spacing} ${_centered} ${customClass}`}>
       {children}
     </div>
   </>
