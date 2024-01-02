@@ -1,4 +1,5 @@
-interface Props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+import { HTMLMotionProps, motion } from "framer-motion"
+interface Props extends HTMLMotionProps<"div">{
   direction?: "horizontal"|"vertical"
   spacing?: "sm"|"md"|"lg"
   customClass?: string
@@ -72,9 +73,9 @@ const UIStack:React.FC<Props> = ({
   : twClasses.centered.vertical
 
   return <>
-    <div {...defaultProps} aria-label="stack" className={`${twClasses.default} ${_direction} ${_spacing} ${_centered} ${customClass}`}>
+    <motion.div {...defaultProps} aria-label="stack" className={`${twClasses.default} ${_direction} ${_spacing} ${_centered} ${customClass}`}>
       {children}
-    </div>
+    </motion.div>
   </>
 }
  

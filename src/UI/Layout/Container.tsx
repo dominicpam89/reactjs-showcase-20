@@ -1,11 +1,9 @@
-interface Props
-	extends React.DetailedHTMLProps<
-		React.HTMLAttributes<HTMLDivElement>,
-		HTMLDivElement
-	> {
+import { HTMLMotionProps, motion } from "framer-motion"
+
+interface Props extends HTMLMotionProps<"div"> {
 	centered?: boolean
 	padding?: "sm" | "md" | "lg"
-	color?: "primary"|"secondary"|"default"
+	color?: "primary" | "secondary" | "default"
 	customClass?: string
 }
 
@@ -55,12 +53,12 @@ const UIContainer: React.FC<Props> = ({
 			? twClasses.padding.md
 			: twClasses.padding.lg
 	return (
-		<div
+		<motion.div
 			{...defaultProps}
 			className={`${twClasses.default} ${_centered} ${_color} ${_padding} ${customClass}`}
 		>
 			{children}
-		</div>
+		</motion.div>
 	)
 }
 

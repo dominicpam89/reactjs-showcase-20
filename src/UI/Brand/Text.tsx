@@ -16,8 +16,8 @@ const twClasses = {
 }
 
 const UIBrandText: React.FC<Props> = ({
-	weight = "bold",
-	customClass = "",
+	weight = "extrabold",
+	customClass = "uppercase tracking-widest",
 	...defaultProps
 }) => {
 	const _weight =
