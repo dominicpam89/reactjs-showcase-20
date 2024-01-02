@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import UINavbar from "./Navbar";
+import UINavbar from "./Layout/Navbar";
 
 const UIRootLayout = () => {
   return <>
