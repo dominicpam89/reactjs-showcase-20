@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { themeReducer } from "./theme"
+import { modalReducer } from "./modal"
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux"
 
 export const store = configureStore({
   reducer:{
-    theme: themeReducer
+    theme: themeReducer,
+    modal: modalReducer,
   },
 })
 
