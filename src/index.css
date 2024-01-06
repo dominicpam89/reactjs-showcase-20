@@ -56,17 +56,17 @@
     --color-success-light-contrast: 18,19,18;
 
     /* neutral */
-    --color-neutral-50: #f4efef;
-    --color-neutral-100: #f3f3f3;
-    --color-neutral-200: #d1d1d1;
-    --color-neutral-300: #a6a6a6;
-    --color-neutral-400: #8d8d8d;
-    --color-neutral-500: #737373;
-    --color-neutral-600: #5a5a5a;
-    --color-neutral-700: #404040;
-    --color-neutral-800: #262626;
-    --color-neutral-900: #1a1a1a;
-    --color-neutral-950: #0d0d0d;
+    --color-neutral-50: 244,239,239;
+    --color-neutral-100: 243,243,243;
+    --color-neutral-200: 209,209,209;
+    --color-neutral-300: 166,166,166;
+    --color-neutral-400: 141,141,141;
+    --color-neutral-500: 115,115,115;
+    --color-neutral-600: 90,90,90;
+    --color-neutral-700: 64,64,64;
+    --color-neutral-800: 38,38,38;
+    --color-neutral-900: 26,26,26;
+    --color-neutral-950: 13,13,13;
   }
 
   .theme-dark{
@@ -119,31 +119,31 @@
     --color-success-light-contrast: 18,19,18;
 
     /* neutral */
-    --color-neutral-950: #f2f2f2;
-    --color-neutral-900: #d9d9d9;
-    --color-neutral-800: #c0c0c0;
-    --color-neutral-700: #a6a6a6;
-    --color-neutral-600: #8d8d8d;
-    --color-neutral-500: #737373;
-    --color-neutral-400: #5a5a5a;
-    --color-neutral-300: #404040;
-    --color-neutral-200: #262626;
-    --color-neutral-100: #1a1a1a;
-    --color-neutral-50: #0d0d0d;
+    --color-neutral-950: 242,242,242;
+    --color-neutral-900: 217,217,217;
+    --color-neutral-800: 192,192,192;
+    --color-neutral-700: 166,166,166;
+    --color-neutral-600: 141,141,141;
+    --color-neutral-500: 115,115,115;
+    --color-neutral-400: 90,90,90;
+    --color-neutral-300: 64,64,64;
+    --color-neutral-200: 38,38,38;
+    --color-neutral-100: 26,26,26;
+    --color-neutral-50: 13,13,13;
   }
   .font-theme-primary{
-    --font-family-heading: 'Raleway', sans-serif;
-    --font-family-paragraph: 'Cabin', sans-serif;
+    --font-heading: 'Raleway', sans-serif;
+    --font-paragraph: 'Cabin', sans-serif;
   }
   .font-theme-secondary{
-    --font-family-heading: 'Josefin Sans', sans-serif;
-    --font-family-paragraph: 'Lato', sans-serif;
+    --font-heading: 'Josefin Sans', sans-serif;
+    --font-paragraph: 'Lato', sans-serif;
   }
   body *{
-    font-family: var(--font-family-paragraph);
+    font-family: var(--font-paragraph);
     transition: all 300ms ease-out;
   }
   h1, h2, h3, h4, h5, h6{
-    font-family: var(--font-family-heading);
+    font-family: var(--font-heading);
   }
 }

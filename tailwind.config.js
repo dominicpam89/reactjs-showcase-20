@@ -100,22 +100,26 @@ export default {
 					},
 				},
 				neutral: {
-					"50": "var(--color-neutral-50)",
-					"100": "var(--color-neutral-100)",
-					"200": "var(--color-neutral-200)",
-					"300": "var(--color-neutral-300)",
-					"400": "var(--color-neutral-400)",
-					"500": "var(--color-neutral-500)",
-					"600": "var(--color-neutral-600)",
-					"700": "var(--color-neutral-700)",
-					"800": "var(--color-neutral-800)",
-					"900": "var(--color-neutral-900)",
-					"950": "var(--color-neutral-950)"
+					"50": withOpacity("--color-neutral-50"),
+					"100": withOpacity("--color-neutral-100"),
+					"200": withOpacity("--color-neutral-200"),
+					"300": withOpacity("--color-neutral-300"),
+					"400": withOpacity("--color-neutral-400"),
+					"500": withOpacity("--color-neutral-500"),
+					"600": withOpacity("--color-neutral-600"),
+					"700": withOpacity("--color-neutral-700"),
+					"800": withOpacity("--color-neutral-800"),
+					"900": withOpacity("--color-neutral-900"),
+					"950": withOpacity("--color-neutral-950")
 				},
 			},
 			fontSize:{
 				xxs: "0.65rem",
-			},     
+			},
+			fontFamily:{
+				heading: "var(--font-heading)",
+				paragraph: "var(--font-paragraph)"
+			}    
     },
   },
   plugins: [],
