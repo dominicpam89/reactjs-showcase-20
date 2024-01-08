@@ -1,41 +1,10 @@
-interface Props
-	extends React.DetailedHTMLProps<
-		React.HTMLAttributes<HTMLElement>,
-		HTMLElement
-	> {
-	contents?: 2 | 3
-  centerElement?: React.ReactNode
-  brand: React.ReactNode
-  navigation: React.ReactNode
-}
+import { useMediaQuery } from "../../data/hooks/useMediaQuery"
+import DesktopHeader from "./Header/DesktopHeader"
+import MobileHeader from "./Header/MobileHeader"
 
-const RootHeader: React.FC<Props> = ({ contents = 2, brand, navigation, centerElement=<></>, ...defaultProps }) => {
-	return (
-		<>
-			<header {...defaultProps} className="p-6 md:p-8 flex justify-between items-center bg-neutral-100 text-neutral-900">
-				<div
-					id="header-left"
-					className="w-full flex-grow-0 flex justify-start space-x-2"
-				>
-					{brand}
-				</div>
-				{contents === 3 && (
-					<div
-						id="header-center"
-						className="flex justify-center space-x-2"
-					>
-						{centerElement}
-					</div>
-				)}
-				<div
-					id="header-right"
-					className="w-full flex justify-end items-center space-x-4 lg:space-x-8"
-				>
-					{navigation}
-				</div>
-			</header>
-		</>
-	)
+const RootHeader = () => {
+	const isViewDesktop = useMediaQuery(`(min-width: 768px)`)
+	return isViewDesktop ? <DesktopHeader />:<MobileHeader />
 }
 
 export default RootHeader

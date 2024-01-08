@@ -1,18 +1,14 @@
 import RootHeader from "./RootLayout/Header"
-import RootMain from "./RootLayout/Main";
-import RootFooter from "./RootLayout/Footer";
-import HeaderNav from "./RootLayout/Header/Navbar";
-import HeaderBrand from "./RootLayout/Header/Brand";
-
+import RootMain from "./RootLayout/Main"
+import RootFooter from "./RootLayout/Footer"
 const UIRootLayout = () => {
-  return <>
-    <RootHeader 
-      brand={<HeaderBrand />}
-      navigation={<HeaderNav />}
-    />
-    <RootMain />
-    <RootFooter />
-  </>
+	return (
+		<>
+			<RootHeader />
+			<RootMain />
+			<RootFooter />
+		</>
+	)
 }
- 
-export default UIRootLayout;
+
+export default UIRootLayout

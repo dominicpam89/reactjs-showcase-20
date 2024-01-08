@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../../../../data/store"
 import { Link, useLocation } from "react-router-dom"
-import { motion } from "framer-motion"
+// import { AnimatePresence, motion } from "framer-motion"
 
 type TypeLink = {
 	link: string
@@ -39,12 +39,12 @@ const LinkItem: React.FC<Props> = ({ link }) => {
 			<Link to={link.link} className={`font-heading ${linkColor}`}>
 				{link.text}
 			</Link>
-				{pathname === link.link && (
+				{/* {pathname === link.link && (
 					<motion.span
-						layoutId="underline"
+						layoutId="highlight"
 						className={`absolute -bottom-1 left-0 w-[40%] ml-[30%] h-[2px] rounded-full transition-none ${underlineColor}`}
 					></motion.span>
-				)}
+				)} */}
 		</li>
 	)
 }

@@ -1,17 +1,19 @@
-import { TypeLinks } from "../Navbar";
-import LinkItem from "./DesktopNav/LinkItem";
-import HeaderThemeToggle from "./Common/ThemeToggle";
+import LinkItem from "./DesktopNav/LinkItem"
 import { motion } from "framer-motion"
+import HeaderThemeToggle from "./Common/ThemeToggle"
+import NavAvatar from "./Common/NavAvatar"
+import NavChart from "./Common/NavCart"
+import { TypeLinks } from "../../../../data/utils/navlink"
 
 type Props = {
-  links: TypeLinks[]
+	links: TypeLinks[]
 }
 
-const DesktopNav:React.FC<Props> = ({links}) => {
-  return (
+const DesktopNav: React.FC<Props> = ({ links }) => {
+	return (
 		<motion.div
 			id="nav-desktop"
-			className="flex items-center space-x-4 lg:space-x-6"
+			className="flex items-center space-x-6 lg:space-x-8"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
@@ -22,8 +24,10 @@ const DesktopNav:React.FC<Props> = ({links}) => {
 					<LinkItem key={link.link} link={link} />
 				))}
 			</ul>
+			<NavChart />
+			<NavAvatar />
 		</motion.div>
-  )
+	)
 }
- 
-export default DesktopNav;
+
+export default DesktopNav

@@ -1,13 +1,13 @@
 import { AnimatePresence } from "framer-motion"
 import { useAppDispatch, useAppSelector } from "../../../../data/store"
 import { modalActions } from "../../../../data/store/modal"
-import UIModal from "../../../Layout/Modal"
-import UIIconButton from "../../../Button/IconButton"
 import { MdMenu } from "react-icons/md"
 import { motion } from "framer-motion"
-import { TypeLinks } from "../Navbar"
 import { Link, useLocation } from "react-router-dom"
+import { TypeLinks } from "../../../../data/utils/navlink"
 import HeaderThemeToggle from "./Common/ThemeToggle"
+import UIModal from "../../../Layout/Modal"
+import UIIconButton from "../../../Button/IconButton"
 
 type ContainerProps = {children:React.ReactNode}
 type Props = {
@@ -37,15 +37,20 @@ const ModalMenu:React.FC<Props> = ({links})=>{
 const Content:React.FC<Props> = ({links})=>{
 	const {pathname} = useLocation()
 	return (
-		<div className="z-[800] absolute flex flex-col space-y-4 p-4 top-0 right-0 w-1/2 h-full bg-neutral-950 text-neutral-100" onClick={e=>e.stopPropagation()}>
-			<ul className="flex flex-col text-lg space-y-4">
-				{links.map(link=>{
-					return <li>
-						<Link to={link.link} className="relative">
-							<span>{link.text}</span>
-							{pathname===link.link && <ContentHighlight />}
-						</Link>
-					</li>
+		<div
+			className="z-[800] absolute flex flex-col space-y-8 top-0 right-0 w-1/2 h-full p-12 bg-neutral-950 text-neutral-100"
+			onClick={(e) => e.stopPropagation()}
+		>
+			<ul className="flex flex-col text-lg space-y-8">
+				{links.map((link) => {
+					return (
+						<li key={link.link}>
+							<Link to={link.link} className="relative">
+								<span className="font-heading">{link.text}</span>
+								{pathname === link.link && <ContentHighlight />}
+							</Link>
+						</li>
+					)
 				})}
 			</ul>
 			<HeaderThemeToggle navType="mobile" />
@@ -54,21 +59,22 @@ const Content:React.FC<Props> = ({links})=>{
 }
 
 const ContentHighlight = ()=>{
+	const {colorTheme} = useAppSelector(state=>state.theme)
+	const borderColor = colorTheme==="theme-dark" ? "border-info-main-color/50":"border-warning-main-color/50"
 	return (
 		<motion.div
 			initial={{width:"0%"}}
 			animate={{width:"100%"}}
-			exit={{width:"0%"}}
 			transition={{
-				duration: 0.24,
+				duration: 0.66,
 				type:"spring"
 			}}
-			className="absolute w-full -bottom-1 -z-50 border border-warning-main-color/80"
+			className={`absolute transition-colors w-full -bottom-1 -z-50 border ${borderColor}`}
 		></motion.div>
 	)
 }
 
-const SidebarMenu:React.FC<Props> = ({links}) => {
+const MobileNav:React.FC<Props> = ({links}) => {
 	const { visible: modalVisible } = useAppSelector((state) => state.modal)
 	const dispatch = useAppDispatch()
 	return (
@@ -78,11 +84,11 @@ const SidebarMenu:React.FC<Props> = ({links}) => {
 				icon={<MdMenu />}
 				customClass="h-8"
 			/>
-			<AnimatePresence>s
+			<AnimatePresence>
 				{modalVisible && <ModalMenu links={links} />}
 			</AnimatePresence>
 		</Container>
 	)
 }
 
-export default SidebarMenu
+export default MobileNav
