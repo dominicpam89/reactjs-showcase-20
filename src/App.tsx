@@ -1,9 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import UIRootLayout from "./UI/RootLayout"
-import Home, { loader as redirectHome } from "./features/Home"
-import ProfilePage from "./features/Profile"
-import SettingsPage from "./features/Settings"
 import Auth from "./features/Auth"
+import HomePage, { loader as redirectHome } from "./features/Home"
+import MenuPage from "./features/Menu"
+import AboutPage from "./features/About"
+import ServicePage from "./features/Service"
+import CartPage from "./features/Cart"
+import ProfilePage from "./features/Profile"
 
 const router = createBrowserRouter([
 	{
@@ -11,9 +14,12 @@ const router = createBrowserRouter([
 		element: <UIRootLayout />,
 		children: [
 			{ index: true, loader: redirectHome },
-			{ path: "home", element: <Home /> },
-			{ path: "profile", element: <ProfilePage />},
-			{ path: "settings", element: <SettingsPage />},
+			{ path: "home", element: <HomePage /> },
+			{ path: "menu", element: <MenuPage /> },
+			{ path: "about", element: <AboutPage /> },
+			{ path: "service", element: <ServicePage /> },
+			{ path: "cart", element: <CartPage /> },
+			{ path: "profile", element: <ProfilePage /> },
 		],
 	},
 	{ path: "/auth", element: <Auth /> },
