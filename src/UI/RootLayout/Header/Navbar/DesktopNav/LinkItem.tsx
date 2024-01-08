@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../../data/store"
+import { useAppSelector } from "../../../../../data/store"
 import { Link, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 
@@ -42,7 +42,7 @@ const LinkItem: React.FC<Props> = ({ link }) => {
 				{pathname === link.link && (
 					<motion.span
 						layoutId="underline"
-						className={`absolute bottom-0 left-0 w-[40%] ml-[30%] h-[2px] rounded-full transition-none ${underlineColor}`}
+						className={`absolute -bottom-1 left-0 w-[40%] ml-[30%] h-[2px] rounded-full transition-none ${underlineColor}`}
 					></motion.span>
 				)}
 		</li>

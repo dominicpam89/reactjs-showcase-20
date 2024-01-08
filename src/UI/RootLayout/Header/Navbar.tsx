@@ -1,20 +1,27 @@
-import HeaderThemeToggle from "./Navbar/ThemeToggle"
-import LinkItem from "./Navbar/LinkItem"
+import MobileNav from "./Navbar/MobileNav"
+import DesktopNav from "./Navbar/DekstopNav"
+import { useMediaQuery } from "../../../data/hooks/useMediaQuery"
+import { AnimatePresence } from "framer-motion"
 
-const links = [
+export type TypeLinks = {
+	link: string
+	text: string
+}
+
+const links: TypeLinks[] = [
 	{ link: "/home", text: "Home" },
 	{ link: "/profile", text: "Profile" },
 	{ link: "/settings", text: "Settings" },
-	{ link: "/auth", text: "Auth" },
 ]
 
 const HeaderNav = () => {
+	const screenMd = useMediaQuery(`(min-width:768px)`)
 	return (
 		<>
-			<HeaderThemeToggle />
-			<ul className="flex justify-center md:space-x-4 lg:space-x-8">
-				{links.map((link) => <LinkItem key={link.link} link={link} />)}
-			</ul>
+			<AnimatePresence mode="wait">
+				{screenMd && <DesktopNav key="desktopNav" links={links} />} 
+				{!screenMd && <MobileNav key="mobileNav" links={links} />}
+			</AnimatePresence>
 		</>
 	)
 }

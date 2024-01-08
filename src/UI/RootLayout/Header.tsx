@@ -12,7 +12,7 @@ interface Props
 const RootHeader: React.FC<Props> = ({ contents = 2, brand, navigation, centerElement=<></>, ...defaultProps }) => {
 	return (
 		<>
-			<header {...defaultProps} className="p-8 flex justify-between items-center bg-neutral-100 text-neutral-800">
+			<header {...defaultProps} className="p-6 md:p-8 flex justify-between items-center bg-neutral-100 text-neutral-900">
 				<div
 					id="header-left"
 					className="w-full flex-grow-0 flex justify-start space-x-2"
@@ -29,7 +29,7 @@ const RootHeader: React.FC<Props> = ({ contents = 2, brand, navigation, centerEl
 				)}
 				<div
 					id="header-right"
-					className="w-full flex justify-end md:space-x-4 lg:space-x-8"
+					className="w-full flex justify-end items-center space-x-4 lg:space-x-8"
 				>
 					{navigation}
 				</div>

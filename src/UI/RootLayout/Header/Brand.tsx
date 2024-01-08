@@ -7,11 +7,11 @@ type Props = {
 
 const motionVar:Variants = {
   hidden: {
-    scale: 0,
-    rotateZ: 360,
-    opacity: 0.3,
+    scale: 0.5,
+    rotateZ: -360,
+    opacity: 0.25,
     transition:{
-      duration:0.12,
+      duration:0.24,
     }
   },
   visible:{
@@ -19,8 +19,7 @@ const motionVar:Variants = {
     rotateZ:0,
     opacity: 1,
     transition:{
-      bounce:0.7,
-      duration:0.24,
+      duration:0.36,
       ease:"circInOut",
     }
   },
