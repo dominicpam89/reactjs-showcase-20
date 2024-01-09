@@ -8,6 +8,7 @@ import { TypeLinks } from "../../../../data/utils/navlink"
 import HeaderThemeToggle from "./Common/ThemeToggle"
 import UIModal from "../../../Layout/Modal"
 import UIIconButton from "../../../Button/IconButton"
+import UIStack from "../../../Layout/Stack"
 
 type ContainerProps = {children:React.ReactNode}
 type Props = {
@@ -38,16 +39,18 @@ const Content:React.FC<Props> = ({links})=>{
 	const {pathname} = useLocation()
 	return (
 		<div
-			className="z-[800] absolute flex flex-col space-y-10 top-0 right-0 w-1/2 h-full p-12 bg-neutral-950 text-neutral-100"
+			className="z-[800] absolute overflow-scroll flex flex-col space-y-10 top-0 right-0 w-7/12 sm:w-1/2 min-h-screen p-12 bg-neutral-950 text-neutral-100"
 			onClick={(e) => e.stopPropagation()}
 		>
-			<ul className="flex flex-col text-lg space-y-10">
+			<ul className="flex flex-col text-sm sm:text-lg space-y-10">
 				{links.map((link) => {
 					return <li key={link.link}>
 							<Link to={link.link} className="relative flex space-x-2 items-center">
-								<span>{link.icon}</span>
-								<span className="font-heading">{link.text}</span>
-								{pathname === link.link && <ContentHighlight />}
+								<UIStack direction="vertical" spacing="sm">
+									<span>{link.icon}</span>
+									<span className="font-heading">{link.text}</span>
+									{pathname === link.link && <ContentHighlight />}
+								</UIStack>
 							</Link>
 						{link.text==="Service" && <ContentDivider />}
 					</li>
@@ -63,14 +66,14 @@ const ContentHighlight = ()=>{
 	const borderColor = colorTheme==="theme-dark" ? "border-info-main-color/50":"border-warning-main-color/50"
 	return (
 		<motion.div
-			initial={{width:"0%"}}
-			animate={{width:"100%"}}
+			initial={{scaleX: 0}}
+			animate={{scaleX: 1}}
 			transition={{
 				duration: 0.48,
 				type:"spring",
 				bounce: 0.5
 			}}
-			className={`absolute transition-colors w-full -left-2 -bottom-1 -z-50 border ${borderColor}`}
+			className={`absolute transition-colors origin-left w-[80%] -bottom-1 -z-50 border ${borderColor}`}
 		></motion.div>
 	)
 }
