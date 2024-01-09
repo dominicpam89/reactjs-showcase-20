@@ -38,19 +38,19 @@ const Content:React.FC<Props> = ({links})=>{
 	const {pathname} = useLocation()
 	return (
 		<div
-			className="z-[800] absolute flex flex-col space-y-8 top-0 right-0 w-1/2 h-full p-12 bg-neutral-950 text-neutral-100"
+			className="z-[800] absolute flex flex-col space-y-10 top-0 right-0 w-1/2 h-full p-12 bg-neutral-950 text-neutral-100"
 			onClick={(e) => e.stopPropagation()}
 		>
-			<ul className="flex flex-col text-lg space-y-8">
+			<ul className="flex flex-col text-lg space-y-10">
 				{links.map((link) => {
-					return (
-						<li key={link.link}>
-							<Link to={link.link} className="relative">
+					return <li key={link.link}>
+							<Link to={link.link} className="relative flex space-x-2 items-center">
+								<span>{link.icon}</span>
 								<span className="font-heading">{link.text}</span>
 								{pathname === link.link && <ContentHighlight />}
 							</Link>
-						</li>
-					)
+						{link.text==="Service" && <ContentDivider />}
+					</li>
 				})}
 			</ul>
 			<HeaderThemeToggle navType="mobile" />
@@ -66,12 +66,17 @@ const ContentHighlight = ()=>{
 			initial={{width:"0%"}}
 			animate={{width:"100%"}}
 			transition={{
-				duration: 0.66,
-				type:"spring"
+				duration: 0.48,
+				type:"spring",
+				bounce: 0.5
 			}}
-			className={`absolute transition-colors w-full -bottom-1 -z-50 border ${borderColor}`}
+			className={`absolute transition-colors w-full -left-2 -bottom-1 -z-50 border ${borderColor}`}
 		></motion.div>
 	)
+}
+
+const ContentDivider = ()=>{
+	return <div className="mt-10 w-full h-[1px] bg-neutral-100/10"></div>
 }
 
 const MobileNav:React.FC<Props> = ({links}) => {
