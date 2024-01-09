@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
-type TypeThemeColors = "theme-light" | "theme-dark"
-type TypeThemeFonts = "font-theme-primary"|"font-theme-secondary"
+export type TypeThemeColors = "theme-light" | "theme-dark"
+export type TypeThemeFonts = "font-theme-primary"|"font-theme-secondary"
 interface TypeThemeState{
   colorTheme: TypeThemeColors,
   fontTheme: TypeThemeFonts
