@@ -1,5 +1,6 @@
 import { AnimatePresence, Variants, motion } from "framer-motion"
 import { useAppSelector } from "../../../../data/store"
+import UIStack from "../../../Layout/Stack"
 
 type Props = {
 	size?: `${number}px`
@@ -37,9 +38,11 @@ const HeaderBrand: React.FC<Props> = ({ size = 48 }) => {
 		exit: "hidden",
 	}
 	return (
-		<div
+		<UIStack
 			id="header-left"
-			className="w-full flex-grow-0 flex justify-start space-x-2"
+			centered="none"
+			direction="vertical"
+			customClass="w-full flex-grow-0 justify-start"
 		>
 			<AnimatePresence mode="wait">
 				{colorTheme === "theme-dark" && (
@@ -59,7 +62,7 @@ const HeaderBrand: React.FC<Props> = ({ size = 48 }) => {
 					/>
 				)}
 			</AnimatePresence>
-		</div>
+		</UIStack>
 	)
 }
 

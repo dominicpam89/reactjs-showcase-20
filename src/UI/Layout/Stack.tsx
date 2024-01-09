@@ -3,7 +3,7 @@ interface Props extends HTMLMotionProps<"div">{
   direction?: "horizontal"|"vertical"
   spacing?: "sm"|"md"|"lg"
   customClass?: string
-  centered?: "horizontal"|"vertical"|"all"
+  centered?: "horizontal"|"vertical"|"all"|"none"
 }
 
 const twClasses = {
@@ -29,7 +29,8 @@ const twClasses = {
   centered:{
     vertical: "justify-center",
     horizontal: "items-center",
-    all: "justify-center items-center"
+    all: "justify-center items-center",
+    none: ""
   }
 }
 
@@ -70,7 +71,9 @@ const UIStack:React.FC<Props> = ({
   ? twClasses.centered.all
   : centered==="horizontal"
   ? twClasses.centered.horizontal
-  : twClasses.centered.vertical
+  : centered==="vertical"
+  ? twClasses.centered.vertical
+  : twClasses.centered.none
 
   return <>
     <motion.div {...defaultProps} aria-label="stack" className={`${twClasses.default} ${_direction} ${_spacing} ${_centered} ${customClass}`}>
