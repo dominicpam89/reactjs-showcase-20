@@ -88,10 +88,10 @@ const MobileNav:React.FC<Props> = ({links}) => {
 	return (
 		<Container>
 			<UIIconButton
-				size="md"
+				iconSize="w-8 h-8"
 				onClick={()=>dispatch(modalActions.show())}
 				icon={<MdMenu />}
-				customClass="h-8"
+				customClass="pl-0"
 			/>
 			<AnimatePresence>
 				{modalVisible && <ModalMenu links={links} />}
