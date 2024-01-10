@@ -73,7 +73,7 @@ const ContentHighlight = ()=>{
 				type:"spring",
 				bounce: 0.5
 			}}
-			className={`absolute transition-colors origin-left w-[80%] -bottom-1 -z-50 border ${borderColor}`}
+			className={`absolute transition-colors origin-left w-[80%] -left-2 -bottom-1 -z-50 border ${borderColor}`}
 		></motion.div>
 	)
 }
