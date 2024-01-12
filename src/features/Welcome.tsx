@@ -8,30 +8,10 @@ import AuthEntry from "./Welcome/AuthEntry"
 import WelcomePointer from "./Welcome/Pointer"
 
 const slides = ["1","2","3"]
-export enum PointerPos{
-	start="justify-start",
-	center="justify-center",
-	end="justify-end",
-}
 enum ContainerColor{
 	slide1="bg-primary-main-color text-primary-main-contrast",
 	slide2="bg-neutral-100 text-neutral-900",
 	slide3="bg-neutral-100 text-neutral-900"
-}
-const getPointerPos = (currentSlide:string|null)=>{
-	let pointerPos
-	switch(currentSlide){
-		case "1":
-			pointerPos = PointerPos.start
-			break
-		case "2":
-			pointerPos = PointerPos.center
-			break
-		default:
-			pointerPos = PointerPos.end
-			break	
-	}
-	return pointerPos
 }
 
 const getContainerColor = (currentSlide:string|null)=>{
@@ -53,7 +33,6 @@ const getContainerColor = (currentSlide:string|null)=>{
 const Welcome = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const currentSlide = searchParams.get("slide")
-	const pointerPos = getPointerPos(currentSlide)
 	const containerCol = getContainerColor(currentSlide)
 	useEffect(() => {
 		if (!searchParams.get("slide")) setSearchParams(`slide=${slides[0]}`)
@@ -64,7 +43,7 @@ const Welcome = () => {
 			{currentSlide === "2" && <WelcomeSlide2 />}
 			{currentSlide === "3" && <WelcomeSlide3 />}
 			<AuthEntry />
-			<WelcomePointer pointerPos={pointerPos} />
+			<WelcomePointer slides={slides} currentSlide={currentSlide} />
 		</WelcomeContainer>
 	)
 }
