@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import UIRootLayout from "./UI/RootLayout"
-import Auth from "./features/Auth"
+import Welcome from "./features/Welcome"
+import AuthPage from "./features/Auth"
 import HomePage, { loader as redirectHome } from "./features/Home"
 import MenuPage from "./features/Menu"
 import AboutPage from "./features/About"
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
 			{ path: "profile", element: <ProfilePage /> },
 		],
 	},
-	{ path: "/auth", element: <Auth /> },
+	{ path: "/welcome", element: <Welcome /> },
+	{ path: "/auth", element: <AuthPage />}
 ])
 
 const App = () => {
