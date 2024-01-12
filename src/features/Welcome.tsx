@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import WelcomeSlide1 from "./Welcome/Slide1"
 import WelcomeContainer from "./Welcome/Container"
@@ -6,6 +6,7 @@ import WelcomeSlide2 from "./Welcome/Slide2"
 import WelcomeSlide3 from "./Welcome/Slide3"
 import AuthEntry from "./Welcome/AuthEntry"
 import WelcomePointer from "./Welcome/Pointer"
+import { AnimatePresence, PanInfo, useDragControls } from "framer-motion"
 
 const slides = ["1","2","3"]
 enum ContainerColor{
@@ -31,17 +32,49 @@ const getContainerColor = (currentSlide:string|null)=>{
 }
 
 const Welcome = () => {
+	// Logic
 	const [searchParams, setSearchParams] = useSearchParams()
 	const currentSlide = searchParams.get("slide")
 	const containerCol = getContainerColor(currentSlide)
+	const dragControls = useDragControls()
+	const onDragEnd = useCallback((event:PointerEvent | MouseEvent | TouchEvent, info:PanInfo) => {
+		event
+		if (info.offset.x > 0){
+			currentSlide === "1"
+				? null
+				: setSearchParams(`slide=${Number(currentSlide) - 1}`)
+		}
+		else if (info.offset.x < 0){
+			currentSlide === "3"
+				? null
+				: setSearchParams(`slide=${Number(currentSlide) + 1}`)
+		}
+	},[currentSlide])
 	useEffect(() => {
 		if (!searchParams.get("slide")) setSearchParams(`slide=${slides[0]}`)
 	}, [searchParams, setSearchParams])
+
+	// Render
 	return (
-		<WelcomeContainer customClass={`${containerCol}`}>
-			{currentSlide === "1" && <WelcomeSlide1 />}
-			{currentSlide === "2" && <WelcomeSlide2 />}
-			{currentSlide === "3" && <WelcomeSlide3 />}
+		<WelcomeContainer 
+			customClass={`${containerCol}`}
+			drag="x"
+			dragSnapToOrigin
+			dragConstraints={{ left: -2, right: 2 }}
+			dragControls={dragControls}
+			dragTransition={{
+				min:0,
+				max:100,
+				bounceDamping: 9,
+				bounceStiffness:100,
+			}}
+			onDragEnd={onDragEnd}
+		>
+			<AnimatePresence mode="wait">
+				{currentSlide === "1" && <WelcomeSlide1 />}
+				{currentSlide === "2" && <WelcomeSlide2 />}
+				{currentSlide === "3" && <WelcomeSlide3 />}
+			</AnimatePresence>
 			<AuthEntry />
 			<WelcomePointer slides={slides} currentSlide={currentSlide} />
 		</WelcomeContainer>

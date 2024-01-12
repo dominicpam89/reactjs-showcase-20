@@ -1,9 +1,9 @@
 import { FaGoogle, FaFacebook } from "react-icons/fa"
 import UIIconButton from "../../UI/Button/IconButton";
 
-const buttonSize = "w-full py-5 md:py-7 h-8 md:h-12"
-const iconSize = "h-auto w-5 md:w-6"
-const textSize = "text-sm md:text-lg lg:text-xl"
+const buttonSize = "w-full py-4 md:py-6 h-6 md:h-10"
+const iconSize = "h-auto w-4 md:w-5"
+const textSize = "text-xs md:text-base lg:text-lg"
 
 const AuthEntry = () => {
   return (

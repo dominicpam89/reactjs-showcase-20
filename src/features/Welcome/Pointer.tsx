@@ -17,12 +17,13 @@ const WelcomePointer:React.FC<Props> = ({slides,currentSlide})=> {
 			{slides.map((slide) => {
 				return (
 					<motion.div
-						animate={{opacity:[0,1,1], y:[50,25,0]}}
+						key={slide}
 						className={`w-1/3 h-2 rounded-full ${
-							slide === currentSlide
+							slide === currentSlide 
 								? "bg-primary-main-contrast/80"
 								: "bg-primary-main-contrast/20"
 						}`}
+						animate={{opacity:[0,1,1], y:[50,25,0]}}
 					></motion.div>
 				)
 			})}

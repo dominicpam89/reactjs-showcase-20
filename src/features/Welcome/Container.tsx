@@ -1,11 +1,12 @@
-type Props = {
-  children: React.ReactNode
+import { HTMLMotionProps, motion } from "framer-motion"
+
+interface Props extends HTMLMotionProps<"div">{
   customClass?: string
 }
 
-const WelcomeContainer:React.FC<Props> = ({children, customClass=""}) => {
+const WelcomeContainer:React.FC<Props> = ({children, customClass="", ...defaultProps}) => {
   return (
-		<div className={`
+		<motion.div {...defaultProps} className={`
       relative min-h-screen w-full
       flex flex-col justify-center 
       px-12 sm:px-24 md:px-52 lg:px-72
@@ -13,7 +14,7 @@ const WelcomeContainer:React.FC<Props> = ({children, customClass=""}) => {
       ${customClass}  
     `}>
         {children}
-		</div>
+		</motion.div>
   )
 }
  

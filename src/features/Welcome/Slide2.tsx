@@ -1,6 +1,13 @@
+import UIStack from "../../UI/Layout/Stack";
+
 const WelcomeSlide2 = () => {
   return <>
-    <p>Welcome Slide 2</p>
+    <UIStack
+      centered="all"
+      
+    >
+      
+    </UIStack>
   </>
 }
  

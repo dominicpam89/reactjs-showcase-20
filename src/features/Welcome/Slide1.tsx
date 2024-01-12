@@ -42,22 +42,38 @@ const motionVar:MotionVar = {
 const WelcomeSlide1 = () => {
 	return (
 		<>
-				<UIStack
-					centered="all"
-					variants={motionVar.container}
-					initial="hidden"
-					animate="visible"
-					exit="hidden"
-					whileInView="inView"
-					customClass={`
+			<UIStack
+				centered="all"
+				variants={motionVar.container}
+				initial="hidden"
+				animate="visible"
+				exit="hidden"
+				whileInView="inView"
+				customClass={`
 						space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10
 						max-w-md mx-auto
 					`}
-				>
-					<UIBrandLogo variants={motionVar.logo} />
-					<UIBrandText variants={motionVar.text} />
-					<UIBrandDescription variants={motionVar.description} />
-				</UIStack>
+			>
+				<UIBrandLogo
+					variants={motionVar.logo}
+					initial="hidden"
+					animate="visible"
+					exit="visible"
+					whileInView="inView"
+				/>
+				<UIBrandText
+					variants={motionVar.text}
+					initial="hidden"
+					animate="visible"
+					exit="visible"
+				/>
+				<UIBrandDescription
+					variants={motionVar.description}
+					initial="hidden"
+					animate="visible"
+					exit="visible"
+				/>
+			</UIStack>
 		</>
 	)
 }
