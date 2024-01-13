@@ -75,7 +75,7 @@ const Welcome = () => {
 				{currentSlide === "2" && <WelcomeSlide2 />}
 				{currentSlide === "3" && <WelcomeSlide3 />}
 			</AnimatePresence>
-			<AuthEntry />
+			{currentSlide !=="1" && <AuthEntry currentSlide={currentSlide} />}
 			<WelcomePointer slides={slides} currentSlide={currentSlide} />
 		</WelcomeContainer>
 	)
