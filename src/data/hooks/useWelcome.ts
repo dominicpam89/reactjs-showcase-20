@@ -1,31 +1,20 @@
-import { useState, useEffect } from "react"
-import { service_welcome_slide2, TypeImageSize } from "../services/welcome/slide2"
+import { File, TypeImageSize, service_welcome } from "../services/page-welcome"
 import { useQuery } from "@tanstack/react-query"
 
-type FetchState = null|"isReady"|"isError"|"isLoading"
-
-export const useHook_getImage_slide2 = (size:TypeImageSize) => {
+export const useHookWelcomePage = (file:File, size:TypeImageSize) => {
   // State of Render
-	const [imageState, setImageState] = useState<FetchState>(null)
-
 	const imageQuery = useQuery({
-		queryKey: ["images", "welcome", size],
-		queryFn: () => service_welcome_slide2("sm"),
+		queryKey: ["images", "welcome", {file, size}],
+		queryFn: () => service_welcome(file, size),
 	})
 
-	// set condition based on query
-	useEffect(() => {
-		if (imageQuery.isLoading) {
-			setImageState("isLoading")
-		} else if (imageQuery.data) {
-			setImageState("isReady")
-		} else {
-			setImageState("isError")
-		}
-	}, [imageQuery, setImageState])
+	const {data, error, isLoading, isError, isSuccess} = imageQuery
+
+	const imageState = {isLoading, isError, isSuccess}
+	const imageData = {data, error}
 
 	return {
 		imageState,
-    imageQuery
+		imageData
 	}
 }
