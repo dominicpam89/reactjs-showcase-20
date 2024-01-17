@@ -1,4 +1,3 @@
-import UIReactIcon from "../../UI/ReactIcon"
 import { HTMLMotionProps, motion } from "framer-motion"
 
 type BtnType = "contained" | "outlined" | "text"
@@ -12,13 +11,10 @@ type ColorSystem =
 	| "none"
 type Size = "xs" | "sm" | "md" | "lg" | "xl"
 type Roundness = "none" | "sm" | "md" | "lg" | "full"
-type Shadow = "none"|"light"|"dark"
+type Shadow = "none" | "light" | "dark"
 
 interface Props extends HTMLMotionProps<"button"> {
-	$text: string
-  $icon: React.ReactNode
-  $textPos?: "start"|"end"|"none"
-  $type?: BtnType
+	$type?: BtnType
 	$color?: ColorSystem
 	$size?: Size
 	$roundness?: Roundness
@@ -30,19 +26,12 @@ interface Props extends HTMLMotionProps<"button"> {
 const twClasses = {
 	fullwidth: "w-full",
 	size: {
-		xs: "py-2 px-2 text-xs",
-		sm: "py-3 px-3 text-sm",
-		md: "py-4 px-4 text-base",
-		lg: "py-5 px-6 text-lg",
-		xl: "py-6 px-7 text-xl",
+		xs: "py-1 px-2 text-xs",
+		sm: "py-2 px-3 text-sm",
+		md: "py-3 px-4 text-base",
+		lg: "py-4 px-6 text-lg",
+		xl: "py-5 px-7 text-xl",
 	},
-  iconSize:{
-		xs: "text-base",
-		sm: "text-lg",
-		md: "text-xl",
-		lg: "text-2xl",
-		xl: "text-3xl",
-  },
 	roundness: {
 		none: "",
 		sm: "rounded-sm",
@@ -133,10 +122,8 @@ const getColorClass = (type: BtnType, color: ColorSystem) => {
 	return twClass
 }
 
-const UIIconButton: React.FC<Props> = ({
-	$text="",
-  $icon,
-  $textPos="none",
+const UIButton: React.FC<Props> = ({
+	children,
 	$type = "contained",
 	$color = "primary",
 	$size = "sm",
@@ -157,16 +144,6 @@ const UIIconButton: React.FC<Props> = ({
 			: $size === "lg"
 			? twClasses.size.lg
 			: twClasses.size.xl
-  const iconSizeClass =
-		$size === "xs"
-			? twClasses.iconSize.xs
-			: $size === "sm"
-			? twClasses.iconSize.sm
-			: $size === "md"
-			? twClasses.iconSize.md
-			: $size === "lg"
-			? twClasses.iconSize.lg
-			: twClasses.iconSize.xl
 	const colorClass =
 		$type === "contained"
 			? getColorClass("contained", $color)
@@ -183,16 +160,17 @@ const UIIconButton: React.FC<Props> = ({
 			: $roundness === "full"
 			? twClasses.roundness.full
 			: twClasses.roundness.none
-	const shadowClass = $shadow==="dark"
-	? "shadow-md shadow-gray-900/10"
-	: $shadow==="light"
-	? "shadow-md shadow-gray-100/10"
-	: ""
+	const shadowClass =
+		$shadow === "dark"
+			? "shadow-md shadow-gray-900/10"
+			: $shadow === "light"
+			? "shadow-md shadow-gray-100/10"
+			: ""
 	return (
 		<motion.button
 			{...defaultProps}
 			className={`
-			transition-none flex space-x-2 items-center justify-center
+			transition-none
       ${widthClass}
       ${sizeClass}
       ${colorClass}
@@ -200,14 +178,12 @@ const UIIconButton: React.FC<Props> = ({
 			${shadowClass}
       ${customClass}
     `}
-			whileHover={{scale:1.05}}
-			whileTap={{scale:0.95}}
+			whileHover={{ scale: 1.03 }}
+			whileTap={{ scale: 0.96 }}
 		>
-			{$textPos==="start" && <span>{$text}</span>}
-        <UIReactIcon icon={$icon} className={`text-inherit ${iconSizeClass}`} />
-			{$textPos==="end" && <span>{$text}</span>}
+			{children}
 		</motion.button>
 	)
 }
 
-export default UIIconButton
+export default UIButton
