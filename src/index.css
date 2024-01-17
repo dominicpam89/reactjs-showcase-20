@@ -147,3 +147,9 @@
     font-family: var(--font-heading);
   }
 }
+
+@layer components{
+  .welcome_description{
+    @apply transition-none text-xs md:text-base lg:text-xl xl:text-2xl text-justify break-words hyphens-auto opacity-80
+  }
+}
