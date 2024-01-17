@@ -1,14 +1,19 @@
-import { storage } from "../firebase"
+import { storage } from "./firebase"
 import { ref, getDownloadURL, StorageError } from "firebase/storage"
 
 export type TypeImageSize = "xxs" | "xs" | "sm" | "md" | "lg"
-export const service_welcome_slide2 = async (size: TypeImageSize) => {
+type FileImage<T extends string> = T | Omit<string, "slide-2"|"slide-3">
+export type File = FileImage<"slide-2"|"slide-3">
+export const service_welcome = async function (
+	filename: File,
+	size: TypeImageSize
+) {
 	const imageFileNames = {
-		xxs: "slide-2-xxs.jpg",
-		xs: "slide-2-xs.jpg",
-		sm: "slide-2-sm.jpg",
-		md: "slide-2-md.jpg",
-		lg: "slide-2-lg.jpg",
+		xxs: `${filename}-xxs.jpg`,
+		xs: `${filename}-xs.jpg`,
+		sm: `${filename}-sm.jpg`,
+		md: `${filename}-md.jpg`,
+		lg: `${filename}-lg.jpg`,
 	}
 	const welcomeBucket = ref(storage, "welcome")
 	const imageList = {
