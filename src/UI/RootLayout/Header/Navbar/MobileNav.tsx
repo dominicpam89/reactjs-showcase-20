@@ -93,6 +93,7 @@ const MobileNav:React.FC<Props> = ({links}) => {
 				$text=""
 				$size="xl"
 				$color="none"
+				customClass="px-0 py-0"
 			/>
 			<AnimatePresence>
 				{modalVisible && <ModalMenu links={links} />}
