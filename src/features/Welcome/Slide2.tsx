@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { useHookWelcomePage } from "../../data/hooks/useWelcome"
 import { useAppSelector } from "../../data/store"
 import { motionVar } from "./Slide2.helper"
-import AuthEntry from "./AuthEntry"
 
 type ImageData = {
 	data: string | undefined
@@ -59,8 +58,8 @@ const Description = ()=>{
 			className="welcome_description"
 			variants={motionVar.description}
 		>
-			<h3 className="text-lg font-black text-center uppercase">Lorem Ipsum Dolor</h3>
-			<p className="text-center">
+			<h3 className="text-lg md:text-2xl font-black text-center uppercase tracking-wider">Lorem Ipsum</h3>
+			<p className="text-center text-xs md:text-base">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
 				inventore recusandae alias sint.
 			</p>
@@ -96,7 +95,6 @@ const WelcomeSlide2 = () => {
 					<>
 						<Image imageData={imageData} />
 						<Description />
-						<AuthEntry />
 					</>
 				)}
 			</UIStack>

@@ -27,7 +27,7 @@ const AuthEntry = () => {
 				$icon={<FaFacebook />}
 				$textPos="start"
 				$text="Signin with Facebook"
-				customClass="bg-gradient-to-t from-secondary-main-color to-neutral-100"
+				customClass="bg-gradient-to-b from-secondary-main-color to-neutral-100"
 			/>
 		</motion.div>
   )

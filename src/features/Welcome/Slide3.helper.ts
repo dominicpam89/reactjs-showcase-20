@@ -35,7 +35,7 @@ export const motionVar: MotionVar = {
 		visible:{
 			opacity:1,
 			y:0,
-			transition:{delay:0.36, duration:0.48}
+			transition:{delay:0.48, duration:0.48}
 		}
 	}
 }
