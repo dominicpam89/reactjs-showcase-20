@@ -91,9 +91,11 @@ const MobileNav:React.FC<Props> = ({links}) => {
 				onClick={()=>dispatch(modalActions.show())}
 				$icon={<MdMenu />}
 				$text=""
-				$size="xl"
+				$size="lg"
 				$color="none"
-				customClass="px-0 py-0"
+				style={{
+					padding: "0px"
+				}}
 			/>
 			<AnimatePresence>
 				{modalVisible && <ModalMenu links={links} />}
