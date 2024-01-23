@@ -134,16 +134,17 @@ const getColorClass = (type: BtnType, color: ColorSystem) => {
 }
 
 const UIIconButton: React.FC<Props> = ({
-	$text="",
+	$text,
   $icon,
   $textPos="none",
 	$type = "contained",
 	$color = "primary",
-	$size = "sm",
+	$size = "xs",
 	$roundness = "md",
 	$shadow = "none",
 	$fullWidth = false,
 	customClass = "",
+	disabled,
 	...defaultProps
 }) => {
 	const widthClass = $fullWidth ? twClasses.fullwidth : ""
@@ -192,16 +193,17 @@ const UIIconButton: React.FC<Props> = ({
 		<motion.button
 			{...defaultProps}
 			className={`
-			transition-none flex space-x-2 items-center justify-center
       ${widthClass}
       ${sizeClass}
       ${colorClass}
       ${roundnessClass}
 			${shadowClass}
       ${customClass}
+			transition-none flex space-x-2 items-center justify-center hover:cursor-pointer disabled:opacity-20
     `}
-			whileHover={{scale:1.05}}
-			whileTap={{scale:0.95}}
+			disabled={disabled}
+			whileHover={{scale:disabled?1:1.05}}
+			whileTap={{scale:disabled?1:0.95}}
 		>
 			{$textPos==="start" && <span>{$text}</span>}
         <UIReactIcon icon={$icon} className={`text-inherit ${iconSizeClass}`} />
