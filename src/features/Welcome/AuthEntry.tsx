@@ -2,13 +2,12 @@ import { FaGoogle, FaFacebook } from "react-icons/fa"
 import { motion } from "framer-motion"
 import UIIconButton from "../../UI/Button/IconButton"
 import { useMediaQuery } from "../../data/hooks/useMediaQuery"
+import useAuthSigninGoogle from "../../data/hooks/useAuthSigninGoogle"
 
-/* 
-  The Component itself
-*/
 const AuthEntry = () => {
 	const largeScreen = useMediaQuery("(min-width: 768px)")
-  return (
+	const {onSignIn} = useAuthSigninGoogle()
+	return (
 		<motion.div
 			className="max-w-md mx-auto w-full flex flex-col space-y-4 transition-none"
 			initial={{opacity:0}}
@@ -21,6 +20,7 @@ const AuthEntry = () => {
 				$textPos="start"
 				$text="Signin with Google"
 				customClass="bg-gradient-to-b from-primary-main-color to-neutral-100"
+				onClick={()=>onSignIn()}
 			/>
 			<UIIconButton
 				$size={largeScreen?"md":"xs"}
