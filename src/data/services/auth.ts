@@ -1,6 +1,5 @@
 import {
 	signInWithPopup,
-	// signOut,
 	GoogleAuthProvider,
 	AuthError,
 } from "firebase/auth"
@@ -13,7 +12,7 @@ export const authSigninGoogle = async () => {
 		.then((result) => {
 			credential = GoogleAuthProvider.credentialFromResult(result)
 			token = credential?.accessToken
-			user = result.user
+			user = result.user.providerData
 			return { credential, token, user }
 		})
 		.catch((error: AuthError) => {
@@ -21,20 +20,6 @@ export const authSigninGoogle = async () => {
 			errorMessage = error.message
 			email = error.customData.email
 			credential = GoogleAuthProvider.credentialFromError(error)
-			return { errorCode, errorMessage, email, credential }
+			throw { errorCode, errorMessage, email, credential }
 		})
 }
-
-// export const authSignout = async()=>{
-//   signOut(auth).then(()=>{
-//     return {
-//       status: "success",
-//       message: "You have successfully signed out"
-//     }
-//   }).catch((error: AuthError)=>{
-//     return {
-//       status: error.code,
-//       message: error.message
-//     }
-//   })
-// }
