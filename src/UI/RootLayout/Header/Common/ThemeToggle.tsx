@@ -1,5 +1,5 @@
-import { useAppSelector, useAppDispatch } from "../../../../../data/store"
-import { themeActions } from "../../../../../data/store/theme"
+import { useAppSelector, useAppDispatch } from "../../../../data/store"
+import { themeActions } from "../../../../data/store/theme"
 import { motion } from "framer-motion"
 
 const twClasses = {

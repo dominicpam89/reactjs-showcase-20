@@ -1,6 +1,7 @@
 import { AnimatePresence, Variants, motion } from "framer-motion"
 import { useAppSelector } from "../../../../data/store"
 import UIStack from "../../../Layout/Stack"
+import { useNavigate } from "react-router-dom"
 
 type Props = {
 	size?: `${number}px`
@@ -28,21 +29,24 @@ const motionVar: Variants = {
 
 const HeaderBrand: React.FC<Props> = ({ size = 48 }) => {
 	const { colorTheme } = useAppSelector((state) => state.theme)
+	const navigate = useNavigate()
 	const attrs = {
 		alt: "foodsy logo",
 		height: size,
 		width: size,
-		className: "transition-none",
+		className: "hover:cursor-pointer transition-none",
+		onClick:()=>navigate("/"),
 		initial: "hidden",
 		animate: "visible",
 		exit: "hidden",
+		whileTap:{scale:0.8, transition:{duration:0.24}}
 	}
 	return (
 		<UIStack
-			id="header-left"
+			id="header-brand"
 			centered="none"
 			direction="vertical"
-			customClass="w-full flex-grow-0 justify-start"
+			customClass="w-full"
 		>
 			<AnimatePresence mode="wait">
 				{colorTheme === "theme-dark" && (

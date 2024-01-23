@@ -1,7 +1,7 @@
-import UIReactIcon from "../../../../ReactIcon"
+import UIReactIcon from "../../../ReactIcon"
 import { FaCartShopping } from "react-icons/fa6"
 import { AnimatePresence, motion } from "framer-motion"
-import useNavCart from "../../../../../data/hooks/useNavCart"
+import useNavCart from "../../../../data/hooks/useNavCart"
 
 const NavChart = () => {
 	const { navigate, commonClass, highlightClass, iconClass, isActive } =

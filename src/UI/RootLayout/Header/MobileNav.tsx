@@ -1,14 +1,14 @@
 import { AnimatePresence } from "framer-motion"
-import { useAppDispatch, useAppSelector } from "../../../../data/store"
-import { modalActions } from "../../../../data/store/modal"
+import { useAppDispatch, useAppSelector } from "../../../data/store"
+import { modalActions } from "../../../data/store/modal"
 import { MdMenu } from "react-icons/md"
 import { motion } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
-import { TypeLinks } from "../../../../data/utils/navlink"
+import { TypeLinks } from "../../../data/utils/navlink"
 import HeaderThemeToggle from "./Common/ThemeToggle"
-import UIModal from "../../../Layout/Modal"
-import UIIconButton from "../../../Button/IconButton"
-import UIStack from "../../../Layout/Stack"
+import UIModal from "../../Layout/Modal"
+import UIIconButton from "../../Button/IconButton"
+import UIStack from "../../Layout/Stack"
 
 type ContainerProps = {children:React.ReactNode}
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 
 const Container:React.FC<ContainerProps> = ({children})=>{
 	return <motion.div
-			aria-label="nav-mobile"
+			id="nav-mobile"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}

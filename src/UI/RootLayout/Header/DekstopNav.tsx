@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import HeaderThemeToggle from "./Common/ThemeToggle"
 import NavAvatar from "./Common/NavAvatar"
 import NavChart from "./Common/NavCart"
-import { TypeLinks } from "../../../../data/utils/navlink"
+import { TypeLinks } from "../../../data/utils/navlink"
 
 type Props = {
 	links: TypeLinks[]
